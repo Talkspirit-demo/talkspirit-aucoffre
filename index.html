@@ -188,12 +188,7 @@
 
   .module-card{cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}
   .module-card:hover{border-color:var(--brand)!important;background:#FFF5ED!important;box-shadow:0 8px 24px rgba(245,98,32,.15)!important;transform:translateY(-4px)}
-  .module-card.expanded{border-color:var(--brand)!important;box-shadow:0 8px 24px rgba(245,98,32,.15)!important}
-  .module-details{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .25s ease,margin-top .25s ease;margin-top:0}
-  .module-card:hover .module-details,.module-card.expanded .module-details{max-height:160px;opacity:1;margin-top:10px}
-  .module-details ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;border-top:1px solid #E2D6CA;padding-top:10px}
-  .module-details li{font-size:11px;color:var(--slate);display:flex;align-items:flex-start;gap:5px;line-height:1.45}
-  .module-details li .spark{color:var(--brand);flex-shrink:0;font-size:9px;margin-top:2px}
+  .module-details{display:none}
 </style>
 </head>
 <body>
@@ -694,7 +689,7 @@
     <div class="reveal mb-10 text-center">
       <p style="color:var(--brand);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px">Plateforme complète</p>
       <h2 style="font-size:clamp(26px,3.5vw,40px);font-weight:700;color:var(--slate);line-height:1.15;letter-spacing:-0.5px">Toute la suite Talkspirit</h2>
-      <p style="font-size:15px;color:var(--muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7">Passez la souris sur chaque module — ceux recommandés pour Au Coffre sont mis en avant.</p>
+      <p style="font-size:15px;color:var(--muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7">Cliquez sur chaque module pour le détailler — ceux recommandés pour Au Coffre sont mis en avant.</p>
     </div>
     <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:14px">
 
@@ -1458,6 +1453,62 @@
   document.getElementById('cta-trial').addEventListener('click',  () => track('cta_trial'));
 
 
+</script>
+
+<!-- ════ MODULE MODAL ════ -->
+<div id="module-modal" style="display:none;position:fixed;inset:0;background:rgba(46,31,28,0.55);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);">
+  <div id="module-modal-inner" style="background:white;border-radius:24px;padding:44px 48px;max-width:540px;width:calc(100% - 48px);position:relative;box-shadow:0 16px 48px -16px rgba(46,31,28,0.22);max-height:90vh;overflow-y:auto;">
+    <button id="modal-close" style="position:absolute;top:20px;right:20px;width:36px;height:36px;background:#F0EBE4;border:none;border-radius:50%;cursor:pointer;font-size:16px;color:#6A4B42;transition:background .15s;display:flex;align-items:center;justify-content:center" onmouseenter="this.style.background='#E2D6CA'" onmouseleave="this.style.background='#F0EBE4'">✕</button>
+    <div id="modal-emoji" style="font-size:48px;margin-bottom:16px;line-height:1"></div>
+    <div id="modal-badge" style="margin-bottom:12px;min-height:0"></div>
+    <h3 id="modal-name" style="font-size:28px;font-weight:700;color:#2E1F1C;margin:0 0 8px;letter-spacing:-0.6px"></h3>
+    <p id="modal-subtitle" style="font-size:15px;color:#AA7F65;margin:0 0 24px;line-height:1.5"></p>
+    <ul id="modal-features" style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:16px;border-top:1px solid #E2D6CA;padding-top:22px"></ul>
+    <a href="https://app.talkspirit.com/fr/" target="_blank" style="display:inline-block;background:#F56220;color:white;padding:13px 28px;border-radius:100px;font-weight:700;font-size:14px;text-decoration:none;letter-spacing:-0.2px">Essayer ce module →</a>
+  </div>
+</div>
+<script>
+(function(){
+  var modal = document.getElementById('module-modal');
+
+  function openModal(card) {
+    var ch = card.children;
+    document.getElementById('modal-emoji').textContent = ch[0].textContent;
+    document.getElementById('modal-name').textContent = ch[1].textContent;
+    document.getElementById('modal-subtitle').textContent = ch[2].textContent;
+
+    var hasBadge = !!card.querySelector('span[style*="Recommand"]');
+    document.getElementById('modal-badge').innerHTML = hasBadge
+      ? '<span style="background:#FFF5ED;color:#F56220;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;border:1px solid #F56220;display:inline-block">★ Recommandé pour Au Coffre</span>'
+      : '';
+
+    var ul = document.getElementById('modal-features');
+    ul.innerHTML = '';
+    card.querySelectorAll('.module-details li').forEach(function(li) {
+      var text = li.textContent.replace(/^[✦\s]+/, '').trim();
+      var item = document.createElement('li');
+      item.style.cssText = 'display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#2E1F1C;line-height:1.65';
+      item.innerHTML = '<span style="color:#F56220;flex-shrink:0;font-weight:700;font-size:12px;margin-top:4px">✦</span><span>' + text + '</span>';
+      ul.appendChild(item);
+    });
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.module-card').forEach(function(card) {
+    card.addEventListener('click', function() { openModal(card); });
+  });
+})();
 </script>
 </body>
 </html>
