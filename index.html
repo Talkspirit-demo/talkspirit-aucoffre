@@ -186,6 +186,14 @@
     padding: 6px 14px; border-radius: 100px;
   }
 
+  .module-card{cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}
+  .module-card:hover{border-color:var(--brand)!important;background:#FFF5ED!important;box-shadow:0 8px 24px rgba(245,98,32,.15)!important;transform:translateY(-4px)}
+  .module-card.expanded{border-color:var(--brand)!important;box-shadow:0 8px 24px rgba(245,98,32,.15)!important}
+  .module-details{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .25s ease,margin-top .25s ease;margin-top:0}
+  .module-card:hover .module-details,.module-card.expanded .module-details{max-height:160px;opacity:1;margin-top:10px}
+  .module-details ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px;border-top:1px solid #E2D6CA;padding-top:10px}
+  .module-details li{font-size:11px;color:var(--slate);display:flex;align-items:flex-start;gap:5px;line-height:1.45}
+  .module-details li .spark{color:var(--brand);flex-shrink:0;font-size:9px;margin-top:2px}
 </style>
 </head>
 <body>
@@ -690,99 +698,178 @@
     </div>
     <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:14px">
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="accueil" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">🏠</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Accueil</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Portail central personnalisé</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Tableau de bord configurable — widgets liens rapides, météo, agenda, actualités</li>
+            <li><span class="spark">✦</span>Page d'accueil unifiée pour onboarder les nouveaux collaborateurs dès le premier jour</li>
+            <li><span class="spark">✦</span>Personnalisation par département ou groupe</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="fil-actualite" style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
         <div style="font-size:20px;margin-bottom:8px">📰</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Fil d'actualité</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Information interne unifiée</div>
-        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">★ Recommandé</span></div>
+        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Publiez news, photos et vidéos pour toute l'organisation ou des groupes ciblés</li>
+            <li><span class="spark">✦</span>Réactions, commentaires et ciblage par entité ou département</li>
+            <li><span class="spark">✦</span>Remplace l'intranet statique et les chaînes d'emails internes</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="publications" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">📝</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Publications</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Contenu long-form interne</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Éditeur riche : mise en forme, images, tableaux, liens — pour articles de fond</li>
+            <li><span class="spark">✦</span>Programmation de publication, brouillons, statistiques de lecture intégrées</li>
+            <li><span class="spark">✦</span>Idéal pour communiqués internes, notes de direction, bilans</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="groupes" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">👥</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Groupes</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Espaces collaboratifs</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Chat + Drive + Fil d'actualité réunis dans un espace dédié par équipe ou projet</li>
+            <li><span class="spark">✦</span>Gestion fine des membres, rôles et niveaux d'accès</li>
+            <li><span class="spark">✦</span>Un espace par équipe, filiale, thème ou client — chacun voit ce qui le concerne</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
+      <div class="module-card" data-slug="tchat" style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
         <div style="font-size:20px;margin-bottom:8px">💬</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Tchat</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Messagerie instantanée souveraine</div>
         <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Canaux ouverts, privés ou confidentiels — contrôle total des accès et des droits</li>
+            <li><span class="spark">✦</span>Rétention illimitée des messages, sans perte d'historique ni limite de volume</li>
+            <li><span class="spark">✦</span>Appels vidéo intégrés (Jitsi) + application mobile iOS & Android</li>
+        </ul></div>
+        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="visioconférence" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">🎥</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Visioconférence</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Réunions vidéo intégrées</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Jusqu'à 100 participants simultanés, sans plugin à installer</li>
+            <li><span class="spark">✦</span>Partage d'écran, enregistrement, sous-groupes — directement dans vos canaux</li>
+            <li><span class="spark">✦</span>Salle d'attente pour les participants externes (clients, partenaires)</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
+      <div class="module-card" data-slug="drive" style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
         <div style="font-size:20px;margin-bottom:8px">📁</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Drive</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Stockage souverain hébergé en France</div>
         <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Migration accompagnée depuis Google Drive / Microsoft 365 — des téraoctets sans perte</li>
+            <li><span class="spark">✦</span>Hébergement SecNumCloud en France, coédition OnlyOffice en temps réel</li>
+            <li><span class="spark">✦</span>Permissions granulaires, historique des versions, accès web et mobile</li>
+        </ul></div>
+        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
       </div>
 
-      <div style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
+      <div class="module-card" data-slug="bibliothèque" style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
         <div style="font-size:20px;margin-bottom:8px">📚</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Bibliothèque</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Base de connaissance structurée</div>
         <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Arborescence documentaire consultable et versionnée — procédures, guides, templates</li>
+            <li><span class="spark">✦</span>Onboarding autonome : chaque nouvel arrivant trouve l'info sans solliciter personne</li>
+            <li><span class="spark">✦</span>Remplacement direct de Confluence, Notion ou SharePoint — avec hébergement souverain</li>
+        </ul></div>
+        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
       </div>
 
-      <div style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
+      <div class="module-card" data-slug="projets" style="border:2px solid #F56220;border-radius:16px;padding:18px;background:#FFF5ED">
         <div style="font-size:20px;margin-bottom:8px">🗂️</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Projets</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Gestion de projets Kanban</div>
         <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Tableaux Kanban natifs (To Do / In Progress / Done) par groupe ou en privé</li>
+            <li><span class="spark">✦</span>Cartes avec assignation, date d'échéance, sous-tâches, pièces jointes, discussion</li>
+            <li><span class="spark">✦</span>Vues liste, calendrier — chaque collaborateur voit toutes ses tâches en un coup d'œil</li>
+        </ul></div>
+        <div style="margin-top:8px"><span style="background:#FFF5ED;color:var(--brand);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #F56220">★ Recommandé</span></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="réunions" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">📅</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Réunions</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Rituels structurés de bout en bout</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Agenda avant, compte-rendu pendant, actions après — tout structuré en un seul endroit</li>
+            <li><span class="spark">✦</span>Récurrence automatique et envoi aux participants, suivi des décisions</li>
+            <li><span class="spark">✦</span>Intégration calendrier Google / Outlook — zéro friction avec vos outils existants</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="objectifs" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">🎯</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Objectifs</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">OKR & suivi de performance</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>OKR alignés du top management aux équipes terrain — tout le monde voit le cap</li>
+            <li><span class="spark">✦</span>Suivi en temps réel avec pourcentage d'avancement, tableaux de bord partagés</li>
+            <li><span class="spark">✦</span>Reporting automatique — moins de réunions de suivi, plus d'autonomie</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="structure" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">🏗️</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Structure</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Organigramme & rôles</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Organigramme interactif et navigable par tous les collaborateurs</li>
+            <li><span class="spark">✦</span>Fiches de poste, périmètres, chaînes hiérarchiques toujours à jour</li>
+            <li><span class="spark">✦</span>Mise à jour depuis le SIRH ou l'Active Directory — zéro saisie manuelle</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="agenda partagé" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">🗓️</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Agenda partagé</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Calendrier d'équipe synchronisé</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Synchronisation bidirectionnelle Google ou Outlook — un seul calendrier pour tous</li>
+            <li><span class="spark">✦</span>Vues individuelle, d'équipe et de ressources partagées — réservation de salles</li>
+            <li><span class="spark">✦</span>Rappels intégrés, gestion des disponibilités, invitations natives</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="annuaire" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">📋</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Annuaire</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Répertoire des collaborateurs</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Profil complet : photo, rôle, compétences, numéro direct, département</li>
+            <li><span class="spark">✦</span>Recherche multicritères et filtres par équipe — trouvez la bonne personne en secondes</li>
+            <li><span class="spark">✦</span>Base RH partagée, toujours à jour, synchronisée avec l'AD si besoin</li>
+        </ul></div>
       </div>
 
-      <div style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
+      <div class="module-card" data-slug="suite bureautique" style="border:2px solid #E2D6CA;border-radius:16px;padding:18px;background:white">
         <div style="font-size:20px;margin-bottom:8px">📊</div>
         <div style="font-weight:700;font-size:14px;color:var(--slate)">Suite bureautique</div>
         <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">Docs, tableurs, présentations</div>
+        <div class="module-details"><ul>
+            <li><span class="spark">✦</span>Documents, feuilles de calcul et présentations compatibles formats Microsoft Office</li>
+            <li><span class="spark">✦</span>Co-édition en temps réel, commentaires, historique complet des modifications</li>
+            <li><span class="spark">✦</span>Intégrée nativement dans Drive et les Groupes — zéro outil externe</li>
+        </ul></div>
       </div>
 
     </div>
@@ -861,34 +948,32 @@
 
       <!-- Référence 2 : Mairie de Venelles — angle souveraineté/RGPD -->
       <div class="card reveal p-8 flex flex-col gap-5" style="background:var(--light); transition-delay:0.22s">
-        <!-- Logo client -->
+        <!-- Logo Solimut -->
         <div style="height:44px; display:flex; align-items:center">
-          <img id="logo-ref-venelles" src="data:image/png;base64,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" alt="Mairie de Venelles" style="height:46px; width:auto; max-width:160px; object-fit:contain; object-position:left; filter:drop-shadow(0 1px 3px rgba(0,0,0,0.08))">
+          <img src="https://img.logo.dev/solimut.fr?token=pk_dxVtq1-ISrKBeSvDRWmE5A&size=80" alt="Solimut Mutuelle" style="max-height:40px;max-width:140px;object-fit:contain" onerror="this.style.display='none'">
         </div>
         <div style="display:flex; justify-content:space-between; align-items:flex-start">
           <div>
-            <p style="font-size:19px; font-weight:700; color:var(--slate); letter-spacing:-0.3px">Mairie de Venelles</p>
-            <p style="font-size:13px; color:#94A3B8; margin-top:4px">Secteur Public · 160 agents</p>
+            <p style="font-size:19px; font-weight:700; color:var(--slate); letter-spacing:-0.3px">Solimut Mutuelle</p>
+            <p style="font-size:13px; color:#94A3B8; margin-top:4px">Assurance · 500 employés · Multi-sites</p>
           </div>
-          <span style="background:#F0FDF4; color:#15803D; font-size:13px; font-weight:700; padding:6px 14px; border-radius:100px">🛡️ Souveraineté</span>
+          <span style="background:#F0FDF4; color:#15803D; font-size:13px; font-weight:700; padding:6px 14px; border-radius:100px">Secteur financier</span>
         </div>
-
-        <!-- Pain points matchés -->
         <div style="display:flex; flex-direction:column; gap:6px">
-          <div style="display:flex; gap:8px; align-items:center; font-size:14px; color:#475569"><svg width="12" height="12" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg> SecNumCloud + ISO 27001 — zéro compromis sur la souveraineté</div>
-          <div style="display:flex; gap:8px; align-items:center; font-size:14px; color:#475569"><svg width="12" height="12" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg> Excès d'emails administratifs à réduire</div>
-          <div style="display:flex; gap:8px; align-items:center; font-size:14px; color:#475569"><svg width="12" height="12" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg> Besoin de cohésion inter-services</div>
+          <div style="display:flex; gap:8px; align-items:flex-start; font-size:14px; color:#475569; line-height:1.5"><svg width="14" height="14" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0;margin-top:2px"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg>Partage d'information pour organisation multi-sites — remplacement d'un intranet vieillissant</div>
+          <div style="display:flex; gap:8px; align-items:flex-start; font-size:14px; color:#475569; line-height:1.5"><svg width="14" height="14" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0;margin-top:2px"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg>Migration depuis les outils Microsoft et Google — données rapatriées en France, zéro dépendance</div>
+          <div style="display:flex; gap:8px; align-items:flex-start; font-size:14px; color:#475569; line-height:1.5"><svg width="14" height="14" viewBox="0 0 1080 1080" fill="none" style="flex-shrink:0;margin-top:2px"><path d="M867.857 1072.29C842.143 1072.29 820.286 1063.29 802.286 1045.29C678.857 911.572 592.714 807.429 543.857 732.857L381.857 991.286C363.857 1022.14 334.286 1037.57 293.143 1037.57C246.857 1037.57 223.714 1015.71 223.714 972C223.714 964.286 226.286 950.143 231.429 929.571L424.286 624.857C318.857 648 222.429 690.429 135 752.143C104.143 767.572 81 775.286 65.5714 775.286C45 775.286 28.2857 768.857 15.4286 756C5.14285 740.572 0 721.286 0 698.143C0 672.429 15.4286 646.714 46.2857 621C167.143 543.857 277.714 491.143 378 462.857C360 439.714 333 389.572 297 312.429C261 235.286 230.143 182.571 204.429 154.286C199.286 138.857 196.714 122.143 196.714 104.143C196.714 81.0001 207 59.1429 227.571 38.5714C248.143 18.0001 271.286 7.71448 297 7.71448C338.143 7.71448 384.429 54.0001 435.857 146.571C456.429 182.571 478.286 225 501.429 273.857L563.143 393.429V397.286C648 261 707.143 158.143 740.571 88.7143C768.857 50.1429 801 30.8573 837 30.8573C883.286 30.8573 906.429 52.7144 906.429 96.4287C906.429 122.143 884.572 172.286 840.857 246.857L740.571 420.429C897.429 405 979.714 396 987.429 393.429C1049.14 393.429 1080 412.714 1080 451.286C1080 474.429 1071 497.572 1053 520.714C1035 541.286 1013.14 556.714 987.429 567C948.857 572.143 896.143 577.286 829.286 582.429L686.571 594C753.429 694.286 840.857 801 948.857 914.143C959.143 924.429 964.286 943.714 964.286 972C964.286 997.714 954 1020.86 933.429 1041.43C912.857 1062 891 1072.29 867.857 1072.29Z" fill="#F56220"/></svg>Exigences SecNumCloud + ISO 27001 — aucun compromis sur la souveraineté des données sensibles</div>
         </div>
-
-        <!-- Résultats -->
-        <div style="background:white; border-radius:14px; padding:14px; border:1px solid #E2E8F0">
-          <p style="font-size:15px; color:#475569; line-height:1.7">Information en temps réel pour tous les agents, renforcement de la cohésion hiérarchique et inter-services.</p>
+        <div style="background:white; border-radius:14px; padding:14px; border:1px solid #E2D6CA">
+          <p style="font-size:15px; color:#475569; line-height:1.7">Communication centralisée pour 500 collaborateurs répartis sur plusieurs sites — fin des emails éparpillés, information unifiée, conformité garantie.</p>
         </div>
-
+        <div class="quote-bar pl-4 py-1 mt-auto">
+          <p style="font-size:15px; color:#94A3B8; font-style:italic; line-height:1.6">"Talkspirit nous a permis de créer un véritable lien entre nos sites — l'information circule enfin de façon fluide et sécurisée."</p>
+        </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <span style="background:white; border:1px solid #E2E8F0; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Chat</span>
-          <span style="background:white; border:1px solid #E2E8F0; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Fil d'actualité</span>
-          <span style="background:white; border:1px solid #E2E8F0; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Sécurité FR</span>
+          <span style="background:white; border:1px solid #E2D6CA; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Chat</span>
+          <span style="background:white; border:1px solid #E2D6CA; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Fil d'actualité</span>
+          <span style="background:white; border:1px solid #E2D6CA; font-size:13px; color:#475569; padding:6px 16px; border-radius:100px; font-weight:600">Souveraineté FR</span>
         </div>
       </div>
 
