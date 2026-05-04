@@ -502,18 +502,11 @@
           </div>
 
           <!-- Mockup DROITE — Drive & Bibliothèque (onglets) -->
-          <div class="mockup-reveal" style="border-radius:14px; overflow:hidden; box-shadow:0 4px 24px -4px rgba(46,31,28,.16), 0 1px 4px rgba(46,31,28,.06); border:1px solid #E2D6CA;">
-            <!-- Barre chrome dark -->
-            <div style="background:#2E1F1C; padding:0 16px; display:flex; align-items:center; gap:0; height:40px;">
-              <!-- Dots macOS -->
-              <div style="display:flex;gap:6px;margin-right:20px;flex-shrink:0;">
-                <span style="width:10px;height:10px;border-radius:50%;background:#FF442C;display:inline-block;"></span>
-                <span style="width:10px;height:10px;border-radius:50%;background:#F99F07;display:inline-block;"></span>
-                <span style="width:10px;height:10px;border-radius:50%;background:#25A384;display:inline-block;"></span>
-              </div>
-              <!-- Tabs -->
-              <button id="drv-tab-bibl" onclick="drvShowTab('bibl')" style="background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:0 16px;height:40px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:white;letter-spacing:0.3px;border-bottom:2px solid #F56220;transition:all 150ms;">Bibliothèque</button>
-              <button id="drv-tab-drive" onclick="drvShowTab('drive')" style="background:transparent;border:none;cursor:pointer;padding:0 16px;height:40px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#825A4C;letter-spacing:0.3px;border-bottom:2px solid transparent;transition:all 150ms;">Drive partagé</button>
+          <div class="mockup-reveal" style="border-radius:14px; overflow:hidden; box-shadow:0 4px 24px -4px rgba(46,31,28,.12), 0 1px 4px rgba(46,31,28,.06); border:1px solid #E2D6CA;">
+            <!-- Barre onglets — Greige 50, cohérente avec le reste -->
+            <div style="background:#F9F6F3; border-bottom:1px solid #E2D6CA; padding:0 20px; display:flex; align-items:flex-end; gap:0; height:44px;">
+              <button id="drv-tab-bibl" onclick="drvShowTab('bibl')" style="background:white; border:1px solid #E2D6CA; border-bottom:none; border-radius:8px 8px 0 0; cursor:pointer; padding:0 18px; height:34px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; color:#F56220; letter-spacing:0.2px; margin-right:4px; transition:all 150ms;">Bibliothèque</button>
+              <button id="drv-tab-drive" onclick="drvShowTab('drive')" style="background:transparent; border:1px solid transparent; border-bottom:none; border-radius:8px 8px 0 0; cursor:pointer; padding:0 18px; height:34px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500; color:#AA7F65; letter-spacing:0.2px; margin-right:4px; transition:all 150ms;">Drive partagé</button>
             </div>
             <!-- Panneau Bibliothèque -->
             <div id="drv-panel-bibl" style="display:block;">
@@ -532,15 +525,17 @@
               document.getElementById(panels[k]).style.display = k===tab?'block':'none';
               var btn = document.getElementById(tabs[k]);
               if(k===tab) {
-                btn.style.background='rgba(255,255,255,.08)';
-                btn.style.color='white';
-                btn.style.fontWeight='600';
-                btn.style.borderBottom='2px solid #F56220';
+                btn.style.background='white';
+                btn.style.border='1px solid #E2D6CA';
+                btn.style.borderBottom='none';
+                btn.style.color='#F56220';
+                btn.style.fontWeight='700';
               } else {
                 btn.style.background='transparent';
-                btn.style.color='#825A4C';
+                btn.style.border='1px solid transparent';
+                btn.style.borderBottom='none';
+                btn.style.color='#AA7F65';
                 btn.style.fontWeight='500';
-                btn.style.borderBottom='2px solid transparent';
               }
             });
           }
